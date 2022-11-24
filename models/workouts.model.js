@@ -2,11 +2,11 @@ const { Schema, model } = require("mongoose");
 
 const workoutSchema = new Schema(
   {
-    title: { type: String, required: true },
-    exercises: { type: Object, required: true },
-    duration: { type: Number },
+    exercise: { type: String, required: true },
+    load: { type: String },
+    reps: { type: String, required: true },
   },
   { timestamps: true }
 );
 
-module.exports = new model("Workout", workoutSchema);
+module.exports = model("Workout", workoutSchema);

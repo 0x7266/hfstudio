@@ -1,5 +1,6 @@
 const {
   getWorkouts,
+  getWorkout,
   createWorkout,
   editWorkout,
   deleteWorkout,
@@ -9,6 +10,7 @@ const { Router } = require("express");
 const router = Router();
 
 router.get("/", getWorkouts);
+router.get("/:id", getWorkout);
 router.post("/", createWorkout);
 router.patch("/:id", editWorkout);
 router.delete("/:id", deleteWorkout);
