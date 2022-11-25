@@ -19,11 +19,11 @@ export default function Workouts({ workouts }) {
   }
 
   return (
-    <main className="flex flex-col gap-3 sm:grid sm:col-span-2 sm:grid-cols-2 auto-rows-fr w-fit">
+    <main className="flex flex-col gap-3 sm:grid sm:col-span-2 sm:grid-cols-2 auto-rows-fr w-[250px] sm:w-full sm:max-w-[450px]">
       {workouts.map((w) => (
         <div
           key={w._id}
-          className="rounded bg-custom4 text-custom2 shadow-md flex flex-col justify-between p-3 w-[250px]"
+          className="rounded bg-custom4 text-custom2 shadow-md flex flex-col justify-between p-3"
         >
           <div className="flex flex-col gap-1 ">
             <h2 className="text-3xl font-semibold uppercase text-custom5">
@@ -35,7 +35,7 @@ export default function Workouts({ workouts }) {
             </div>
           </div>
           <button
-            className="self-end w-8 text-red-500"
+            className="self-end w-6 text-red-500 text-opacity-50"
             onClick={() => deleteWorkout(w)}
           >
             <svg
