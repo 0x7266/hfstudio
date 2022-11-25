@@ -6,20 +6,18 @@ import Workouts from "../components/Workouts.js";
 export default function Home() {
   const { workouts, dispatch } = useWorkoutsContext();
 
-  async function getWorkouts() {
-    const response = await fetch("/api/workouts");
-    const data = await response.json();
-    if (response.ok) {
-      dispatch({ type: "GET_WORKOUTS", payload: data });
-    }
-  }
-
   useEffect(() => {
-    getWorkouts();
+    (async function getWorkouts() {
+      const response = await fetch("/api/workouts");
+      const data = await response.json();
+      if (response.ok) {
+        dispatch({ type: "GET_WORKOUTS", payload: data });
+      }
+    })();
   }, [dispatch]);
 
   return (
-    <main className="flex flex-col md:grid md:grid-cols-3 py-12 px-10 gap-3 md:justify-between place-content-between w-full items-center">
+    <main className="flex flex-col md:grid md:grid-cols-3 px-10 gap-3 w-full items-center scroll-smooth">
       <NewWorkoutForm />
       {workouts ? <Workouts workouts={workouts} /> : null}
     </main>

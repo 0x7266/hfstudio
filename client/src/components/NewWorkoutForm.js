@@ -50,7 +50,7 @@ export default function NewWorkoutForm({ notify }) {
           <input
             id="exercise"
             type="text"
-            className="py-2 px-3 text-xl rounded"
+            className="py-2 px-3 text-xl rounded "
             onChange={(e) => setExercise(e.target.value)}
             value={exercise}
           />

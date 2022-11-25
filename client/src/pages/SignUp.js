@@ -1,16 +1,15 @@
 import { useState } from "react";
-import { useLogin } from "../hooks/useLogin.js";
+import { useSignUp } from "../hooks/useSignUp.js";
 
-export default function Login() {
+export default function SignUp() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { login, error, isLoading } = useLogin();
+  const { signUp, error, isLoading } = useSignUp();
 
   async function handleSubmit(e) {
     e.preventDefault();
-
-    await login(email, password);
+    await signUp(name, email, password);
   }
 
   return (
@@ -19,6 +18,18 @@ export default function Login() {
       onSubmit={handleSubmit}
     >
       <div className="inputs flex flex-col gap-2">
+        <div className="flex flex-col">
+          <label htmlFor="name" className="text-custom1 text-xl">
+            Name
+          </label>
+          <input
+            id="name"
+            type="text"
+            className="py-2 px-3 text-xl rounded "
+            onChange={(e) => setName(e.target.value)}
+            value={name}
+          />
+        </div>
         <div className="flex flex-col">
           <label htmlFor="email" className="text-custom1 text-xl">
             E-mail
@@ -48,7 +59,7 @@ export default function Login() {
         disabled={isLoading}
         className="bg-custom5 py-2 px-6 text-xl text-custom1 font-semibold rounded"
       >
-        Login
+        Sign up
       </button>
       {error ? (
         <div className="w-full self-start bg-red-200 bg-opacity-80 text-rose-600 text-opacity-70 font-semibold border-4 border-rose-600 border-opacity-40 rounded p-2">
