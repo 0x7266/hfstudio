@@ -23,13 +23,13 @@ module.exports = {
   createWorkout: async (req, res) => {
     // let emptyFields = [];
 
-    // if (!title) {
+    // if (!req.body.title) {
     //   emptyFields.push("title");
     // }
-    // if (!load) {
+    // if (!req.body.load) {
     //   emptyFields.push("load");
     // }
-    // if (!reps) {
+    // if (!req.body.reps) {
     //   emptyFields.push("reps");
     // }
 

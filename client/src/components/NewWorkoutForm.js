@@ -39,29 +39,49 @@ export default function NewWorkoutForm({ notify }) {
 
   return (
     <form
-      className="col flex flex-col gap-y-3 items-start self-start sm:sticky sm:top-5"
+      className="col flex flex-col gap-y-6 sm:w-1/2 mx-auto self-start sm:sticky sm:top-5"
       onSubmit={createWorkout}
     >
-      <input
-        type="text"
-        className="py-2 px-3 text-xl rounded"
-        onChange={(e) => setExercise(e.target.value)}
-        value={exercise}
-      />
-      <input
-        type="number"
-        className="py-2 px-3 text-xl rounded"
-        onChange={(e) => setLoad(e.target.value)}
-        value={load}
-      />
-      <input
-        type="number"
-        className="py-2 px-3 text-xl rounded"
-        onChange={(e) => setReps(e.target.value)}
-        value={reps}
-      />
-      <button className="bg-slate-800 py-2 px-6 text-xl text-neutral-300 rounded">
-        Add
+      <div className="inputs flex flex-col gap-2">
+        <div className="flex flex-col">
+          <label htmlFor="exercise" className="text-custom1 text-xl">
+            Exercise
+          </label>
+          <input
+            id="exercise"
+            type="text"
+            className="py-2 px-3 text-xl rounded"
+            onChange={(e) => setExercise(e.target.value)}
+            value={exercise}
+          />
+        </div>
+        <div className="flex flex-col">
+          <label htmlFor="load" className="text-custom1 text-xl">
+            Load
+          </label>
+          <input
+            id="load"
+            type="number"
+            className="py-2 px-3 text-xl rounded"
+            onChange={(e) => setLoad(e.target.value)}
+            value={load}
+          />
+        </div>
+        <div className="flex flex-col">
+          <label htmlFor="reps" className="text-custom1 text-xl">
+            Reps
+          </label>
+          <input
+            id="reps"
+            type="number"
+            className="py-2 px-3 text-xl rounded"
+            onChange={(e) => setReps(e.target.value)}
+            value={reps}
+          />
+        </div>
+      </div>
+      <button className="bg-custom5 py-2 px-6 text-xl text-custom1 font-semibold rounded">
+        Add workout
       </button>
       <div className="error inline">
         {error ? (

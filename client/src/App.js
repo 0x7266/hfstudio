@@ -8,7 +8,7 @@ import Register from "./pages/Register";
 
 function App() {
   return (
-    <div className="App bg-zinc-800 min-h-screen flex flex-col items-center">
+    <div className="App bg-custom3 min-h-screen flex flex-col items-center">
       <BrowserRouter>
         <Header />
         <ToastContainer />

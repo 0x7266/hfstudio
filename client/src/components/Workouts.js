@@ -19,14 +19,14 @@ export default function Workouts({ workouts }) {
   }
 
   return (
-    <main className="text-neutral-300 flex flex-col gap-3 sm:grid sm:col-span-2 sm:grid-cols-2 auto-rows-fr w-fit">
+    <main className="flex flex-col gap-3 sm:grid sm:col-span-2 sm:grid-cols-2 auto-rows-fr w-fit">
       {workouts.map((w) => (
         <div
           key={w._id}
-          className="rounded bg-cyan-900 shadow-md flex flex-col p-3 w-[250px]"
+          className="rounded bg-custom4 text-custom2 shadow-md flex flex-col justify-between p-3 w-[250px]"
         >
-          <div className="flex flex-col gap-2">
-            <h2 className="text-2xl font-semibold uppercase text-lime-800">
+          <div className="flex flex-col gap-1 ">
+            <h2 className="text-3xl font-semibold uppercase text-custom5">
               {w.exercise}
             </h2>
             <div className="flex flex-col">
@@ -40,8 +40,6 @@ export default function Workouts({ workouts }) {
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="auto"
-              height="auto"
               fill="currentColor"
               className="bi bi-trash"
               viewBox="0 0 16 16"
