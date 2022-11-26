@@ -1,12 +1,20 @@
 import { toast } from "react-toastify";
 import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
+import { useAuthContext } from "../hooks/useAuthContext.js";
 
 export default function Workouts({ workouts }) {
   const { dispatch, action } = useWorkoutsContext();
+  const { user } = useAuthContext();
 
   async function deleteWorkout(workout) {
+    if (!user) {
+      return;
+    }
     const response = await fetch(`api/workouts/${workout._id}`, {
       method: "DELETE",
+      headers: {
+        "Authorization": `Bearer ${user.token}`,
+      },
     });
     const data = await response.json();
     if (response.ok) {

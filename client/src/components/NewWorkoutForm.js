@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
-import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
+import { useWorkoutsContext } from "../hooks/useWorkoutsContext.js";
+import { useAuthContext } from "../hooks/useAuthContext.js";
 
 export default function NewWorkoutForm({ notify }) {
   const { dispatch, action } = useWorkoutsContext();
@@ -8,6 +9,7 @@ export default function NewWorkoutForm({ notify }) {
   const [load, setLoad] = useState("");
   const [reps, setReps] = useState("");
   const [error, setError] = useState(null);
+  const { user } = useAuthContext();
 
   function notify() {
     toast.success("New workout added", {
@@ -18,9 +20,16 @@ export default function NewWorkoutForm({ notify }) {
 
   async function createWorkout(e) {
     e.preventDefault();
+
+    if (!user) {
+      setError("You must be logged in");
+    }
     const response = await fetch("/api/workouts", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${user.token}`,
+      },
       body: JSON.stringify({ exercise, load, reps }),
     });
     const data = await response.json();
@@ -39,7 +48,7 @@ export default function NewWorkoutForm({ notify }) {
 
   return (
     <form
-      className="col flex flex-col gap-y-6 sm:w-1/2 mx-auto self-start sm:sticky sm:top-5"
+      className="col flex flex-col gap-y-6 w-[250px] mx-auto self-start sm:sticky sm:top-5"
       onSubmit={createWorkout}
     >
       <div className="inputs flex flex-col gap-2">
