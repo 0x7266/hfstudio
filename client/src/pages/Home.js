@@ -25,7 +25,7 @@ export default function Home() {
   }, [dispatch, user]);
 
   return (
-    <main className="flex flex-col-reverse md:grid md:grid-cols-3 px-10 gap-3 w-full items-center scroll-smooth">
+    <main className="flex flex-col-reverse md:grid md:grid-cols-3 gap-5 sm:gap-3 w-full items-start scroll-smooth">
       {workouts ? <Workouts workouts={workouts} /> : null}
       <NewWorkoutForm />
     </main>

@@ -10,27 +10,29 @@ import SignUp from "./pages/SignUp.js";
 function App() {
   const { user } = useAuthContext();
   return (
-    <div className="App bg-custom3 min-h-screen flex flex-col items-center gap-10">
+    <div className="App bg-custom3 min-h-screen flex flex-col items-center gap-5 sm:gap-10">
       <BrowserRouter>
         <Header />
         <ToastContainer />
-        <Routes>
-          <Route
-            exact
-            path="/"
-            element={user ? <Home /> : <Navigate to="/login" />}
-          />
-          <Route
-            exact
-            path="/login"
-            element={!user ? <Login /> : <Navigate to="/" />}
-          />
-          <Route
-            exact
-            path="/signup"
-            element={!user ? <SignUp /> : <Navigate to="/" />}
-          />
-        </Routes>
+        <div className="routes sm:w-4/5">
+          <Routes>
+            <Route
+              exact
+              path="/"
+              element={user ? <Home /> : <Navigate to="/login" />}
+            />
+            <Route
+              exact
+              path="/login"
+              element={!user ? <Login /> : <Navigate to="/" />}
+            />
+            <Route
+              exact
+              path="/signup"
+              element={!user ? <SignUp /> : <Navigate to="/" />}
+            />
+          </Routes>
+        </div>
       </BrowserRouter>
     </div>
   );

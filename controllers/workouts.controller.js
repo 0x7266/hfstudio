@@ -2,8 +2,9 @@ const Workout = require("../models/workouts.model.js");
 
 module.exports = {
   getWorkouts: async (req, res) => {
+    const user_id = req.user._id;
     try {
-      const result = await Workout.find();
+      const result = await Workout.find({ user_id });
       res.status(200).json(result);
     } catch (error) {
       res.status(400).json({ error: error.message });
@@ -38,7 +39,8 @@ module.exports = {
     // }
 
     try {
-      const result = await Workout.create(req.body);
+      const user_id = req.user._id;
+      const result = await Workout.create({ ...req.body, user_id });
       res.status(200).json(result);
     } catch (error) {
       res.status(400).json({ error: error.message });

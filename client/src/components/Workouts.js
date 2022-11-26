@@ -27,11 +27,11 @@ export default function Workouts({ workouts }) {
   }
 
   return (
-    <main className="flex flex-col gap-3 sm:grid sm:col-span-2 sm:grid-cols-2 auto-rows-fr w-[250px] sm:w-full sm:max-w-[450px]">
+    <main className="flex flex-col gap-3 sm:grid sm:col-span-2 sm:grid-cols-2 auto-rows-fr sm:w-full sm:pt-2 w-full">
       {workouts.map((w) => (
         <div
           key={w._id}
-          className="rounded bg-custom4 text-custom2 shadow-md flex flex-col justify-between p-3"
+          className="rounded bg-custom4 text-custom2 shadow-md col flex flex-col justify-between p-3"
         >
           <div className="flex flex-col gap-1 ">
             <h2 className="text-3xl font-semibold uppercase text-custom5">

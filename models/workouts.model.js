@@ -5,6 +5,7 @@ const workoutSchema = new Schema(
     exercise: { type: String, required: true },
     load: { type: String },
     reps: { type: String, required: true },
+    user_id: { type: String, required: true },
   },
   { timestamps: true }
 );

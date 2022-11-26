@@ -18,9 +18,10 @@ export default function Login() {
       className="col flex flex-col gap-y-6 sm:w-1/4 mx-auto self-start"
       onSubmit={handleSubmit}
     >
+      <h1 className="text-center text-5xl text-custom1">Login</h1>
       <div className="inputs flex flex-col gap-2">
         <div className="flex flex-col">
-          <label htmlFor="email" className="text-custom1 text-xl">
+          <label htmlFor="email" className="text-custom2 text-xl">
             E-mail
           </label>
           <input
@@ -32,7 +33,7 @@ export default function Login() {
           />
         </div>
         <div className="flex flex-col">
-          <label htmlFor="password" className="text-custom1 text-xl">
+          <label htmlFor="password" className="text-custom2 text-xl">
             Password
           </label>
           <input
