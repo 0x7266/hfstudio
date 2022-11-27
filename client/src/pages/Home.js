@@ -1,33 +1,18 @@
-import { useEffect } from "react";
-import { useWorkoutsContext } from "../hooks/useWorkoutsContext.js";
-import { useAuthContext } from "../hooks/useAuthContext.js";
-import NewWorkoutForm from "../components/NewWorkoutForm.js";
-import Workouts from "../components/Workouts.js";
+import { Link } from "react-router-dom";
+import { HFSTUDIO } from "../assets/HFSTUDIO.jsx";
 
-export default function Home() {
-  const { workouts, dispatch } = useWorkoutsContext();
-  const { user } = useAuthContext();
-
-  useEffect(() => {
-    if (user) {
-      (async function getWorkouts() {
-        const response = await fetch("/api/workouts", {
-          headers: {
-            "Authorization": `Bearer ${user.token}`,
-          },
-        });
-        const data = await response.json();
-        if (response.ok) {
-          dispatch({ type: "GET_WORKOUTS", payload: data });
-        }
-      })();
-    }
-  }, [dispatch, user]);
-
+export default function Inicio() {
   return (
-    <main className="flex flex-col-reverse md:grid md:grid-cols-3 gap-5 sm:gap-3 w-full items-start scroll-smooth">
-      {workouts ? <Workouts workouts={workouts} /> : null}
-      <NewWorkoutForm />
+    <main className="main w-full h-full">
+      <div className=" backdrop flex flex-1 flex-col items-center gap-3 justify-center h-full">
+        <HFSTUDIO />
+        <Link
+          to="/dashboard"
+          className="hover:scale-125 animate-wiggle text-custom1"
+        >
+          ENTRAR
+        </Link>
+      </div>
     </main>
   );
 }

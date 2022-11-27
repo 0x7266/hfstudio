@@ -47,9 +47,9 @@ export default function NewWorkoutForm({ notify }) {
   }
 
   return (
-    <div className="w-full flex justify-end">
+    <div className="w-full flex sm:justify-end">
       <form
-        className="col flex flex-col gap-y-6 w-[250px] sm:sticky sm:top-5"
+        className="flex flex-col mx-auto gap-y-6 w-[250px] sm:sticky sm:top-5"
         onSubmit={createWorkout}
       >
         <div className="inputs flex flex-col gap-2">
